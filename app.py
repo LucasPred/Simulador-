@@ -1,8 +1,12 @@
 import os
-import base64
-from flask import Flask, render_template_string, request, jsonify
+from flask import Flask, render_template, request, redirect, url_for
 from google import genai
-from google.genai import types
+
+app = Flask(__name__)
+
+# Inicializar el cliente forzando la lectura de la variable de entorno de Render
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+
 
 app = Flask(__name__)
 
