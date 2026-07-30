@@ -96,7 +96,7 @@ HTML_TEMPLATE = """
 """
 
 @app.route('/')
-index():
+def index():
     return render_template_string(HTML_TEMPLATE)
 
 @app.route('/analizar', methods=['POST'])
