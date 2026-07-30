@@ -4,13 +4,9 @@ from google import genai
 
 app = Flask(__name__)
 
-# Inicializar el cliente forzando la lectura de la variable de entorno de Render
-import os
-from google import genai
-
-# Inicializar el cliente asegurando que lea la variable de Render
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
-
+# Inicializar el cliente asegurando que lea la variable de Render (busca ambas opciones por seguridad)
+api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+client = genai.Client(api_key=api_key)
 
 
 app = Flask(__name__)
